@@ -26,12 +26,12 @@
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
 		p:dataSource-ref="dataSource">
 		<!-- annotatedClasses用来列出全部持久化类 -->
-		<property name="annotatedClasses">
-			<list>
-				<!-- 以下用来列出所有的PO类-->
-				<value>org.crazyit.booksys.domain.Book</value>
-			</list>
-		</property>
+		<!--<property name="annotatedClasses">-->
+			<!--<list>-->
+				<!--&lt;!&ndash; 以下用来列出所有的PO类&ndash;&gt;-->
+				<!--<value>org.crazyit.booksys.domain.Book</value>-->
+			<!--</list>-->
+		<!--</property>-->
 		<!-- 定义Hibernate SessionFactory的属性 -->
 		<property name="hibernateProperties">
 			<props>
