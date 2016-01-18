@@ -14,7 +14,7 @@
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close"
 		p:driverClass="com.mysql.jdbc.Driver"
-		p:jdbcUrl="jdbc:mysql://localhost/spring"
+		p:jdbcUrl="jdbc:mysql://localhost/PersonalBlogWeb"
 		p:user="root"
 		p:password="12211104"
 		p:maxPoolSize="40"
@@ -22,16 +22,16 @@
 		p:initialPoolSize="2"
 		p:maxIdleTime="30"/>
 	<!-- 定义Hibernate的SessionFactory，SessionFactory需要依赖数据源，注入dataSource -->
-	<bean id="sessionFactory" 
+	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean"
 		p:dataSource-ref="dataSource">
-		<!-- annotatedClasses用来列出全部持久化类 -->
-		<!--<property name="annotatedClasses">-->
-			<!--<list>-->
-				<!--&lt;!&ndash; 以下用来列出所有的PO类&ndash;&gt;-->
-				<!--<value>org.crazyit.booksys.domain.Book</value>-->
-			<!--</list>-->
-		<!--</property>-->
+		 <!--annotatedClasses用来列出全部持久化类 -->
+		<property name="annotatedClasses">
+			<list>
+				<!-- 以下用来列出所有的PO类-->
+				<value>personalblog.domain.Person</value>
+			</list>
+		</property>
 		<!-- 定义Hibernate SessionFactory的属性 -->
 		<property name="hibernateProperties">
 			<props>
@@ -41,10 +41,42 @@
 				<!--是否根据Hiberante映射创建数据表 -->
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key="hibernate.format_sql">true</prop>				
+				<prop key="hibernate.format_sql">true</prop>
 			</props>
 		</property>
 	</bean>
 
-	
+	<bean id="personService" class="personalblog.service.impl.PersonServiceImp"
+			p:personDao-ref="personDao"/>
+    <bean id="personDao" class="personalblog.dao.impl.PersonDaoImp"
+          p:sessionFactory-ref="sessionFactory"/>
+
+	<!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
+	<!-- 该类是PlatformTransactionManager接口针对采用Hibernate的特定实现类 -->
+	<!-- 配置HibernateTransactionManager需依赖注入SessionFactory -->
+	<bean id="transactionManager"
+		  class="org.springframework.orm.hibernate4.HibernateTransactionManager"
+		  p:sessionFactory-ref="sessionFactory"/>
+
+	<!-- 配置事务增强处理Bean,指定事务管理器 -->
+	<tx:advice id="txAdvice"
+			   transaction-manager="transactionManager">
+		<!-- 用于配置详细的事务定义 -->
+		<tx:attributes>
+			<!-- 所有以'get'开头的方法是read-only的 -->
+			<tx:method name="get*" read-only="true"/>
+			<!-- 其他方法使用默认的事务设置，指定超时时长为5秒 -->
+			<tx:method name="*" isolation="DEFAULT"
+					   propagation="REQUIRED" timeout="5"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- AOP配置的元素 -->
+	<aop:config>
+		<!-- 配置一个切入点 -->
+		<aop:pointcut id="myPointcut" expression="bean(personService)"/>
+		<!-- 指定在myPointcut切入点应用txAdvice事务增强处理 -->
+		<aop:advisor advice-ref="txAdvice"
+					 pointcut-ref="myPointcut"/>
+	</aop:config>
+
 </beans>

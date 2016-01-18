@@ -9,9 +9,13 @@
         <constant name="struts.enable.DynamicMethodInvocation" value="false" />
         <constant name="struts.devMode" value="true"/>
         <package name="lee" extends="struts-default">
+                <action name="showperson" class="personalblog.action.PersonAction"
+                        method="showperson">
+                        <result name="success">/WEB-INF/content/my.jsp</result>
+                </action>
                 <!-- 让用户直接访问该应用时列出所有视图页面 -->
                 <action name="*">
-                        <result>/web/WEB-INF/content/{1}.jsp</result>
+                        <result>/WEB-INF/content/{1}.jsp</result>
                 </action>
         </package>
 </struts>
