@@ -40,6 +40,7 @@
     <!-- start-smoth-scrolling -->
 </head>
 <body>
+<s:debug/>
 <div class="header">
     <div class="container">
         <div class="logo">
@@ -107,10 +108,14 @@
                 <h3></h3>
                 <span>兴趣爱好</span>
 
-                <p>喜欢编程。我思故我在。<br>
-                    爱打篮球，爱跑步，爱读书。<br>
-                    喜欢骑行，大二暑假期间曾和小伙伴们花7天时间从秦皇岛骑到大连。<br>
-                    喜欢弹吉他，虽然弹得不怎么样，却依然自我陶醉。</p>
+                <%--<p>喜欢编程。我思故我在。<br>--%>
+                    <%--爱打篮球，爱跑步，爱读书。<br>--%>
+                    <%--喜欢骑行，大二暑假期间曾和小伙伴们花7天时间从秦皇岛骑到大连。<br>--%>
+                    <%--喜欢弹吉他，虽然弹得不怎么样，却依然自我陶醉。</p>--%>
+                <p><s:iterator value="interest" id="i">
+                    <s:property value="interest_content"/><br>
+                </s:iterator>
+                </p>
 
                 <p class="p-text">你的获得，决定了你过怎么样的生活。而你的付出，决定了你生命的意义。</p>
             </div>

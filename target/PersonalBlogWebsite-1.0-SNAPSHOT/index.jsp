@@ -11,6 +11,7 @@
     <title></title>
   </head>
   <body>
+  <jsp:forward page="/showperson" />
     <h1>小花</h1>
   </body>
 </html>

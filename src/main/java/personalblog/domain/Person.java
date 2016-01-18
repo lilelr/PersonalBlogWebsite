@@ -2,6 +2,8 @@ package personalblog.domain;
 
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by yuxiao on 1/17/16.
@@ -25,6 +27,18 @@ public class Person {
     private String person_resume_path;
     private String person_company;
     private String person_enlighten;
+
+    @OneToMany(targetEntity = Interest.class)
+    @JoinColumn(name="interest_person_id", referencedColumnName = "person_id")
+    private Set<Interest> interests=new HashSet<Interest>();
+
+    public Set<Interest> getInterests() {
+        return interests;
+    }
+
+    public void setInterests(Set<Interest> interests) {
+        this.interests = interests;
+    }
 
     public Integer getId() {
         return id;

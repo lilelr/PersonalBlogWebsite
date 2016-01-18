@@ -11,7 +11,7 @@
         <package name="lee" extends="struts-default">
                 <action name="showperson" class="personalblog.action.PersonAction"
                         method="showperson">
-                        <result name="success">/WEB-INF/content/my.jsp</result>
+                        <result name="success">/WEB-INF/content/home.jsp</result>
                 </action>
                 <!-- 让用户直接访问该应用时列出所有视图页面 -->
                 <action name="*">
