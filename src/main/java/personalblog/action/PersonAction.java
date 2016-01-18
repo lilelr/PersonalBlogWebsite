@@ -23,13 +23,13 @@ public class PersonAction extends ActionSupport{
         this.personService = personService;
     }
 
-    private List<Person> person;
+    private Person person;
 
-    public List<Person> getPerson() {
+    public Person getPerson() {
         return person;
     }
 
-    public void setPerson(List<Person> person) {
+    public void setPerson(Person person) {
 
         this.person = person;
     }
@@ -41,8 +41,8 @@ public class PersonAction extends ActionSupport{
             System.out.println("null");
         }
 
-        setPerson(personService.getPerson());
-        System.out.println(this.getPerson().get(0).getPerson_Email());
+        setPerson(personService.getPerson().get(0));
+        System.out.println(this.getPerson().getPerson_Email());
         return SUCCESS;
     }
 
