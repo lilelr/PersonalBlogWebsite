@@ -1,8 +1,10 @@
 package personalblog.action;
 
 import com.opensymphony.xwork2.ActionSupport;
+import personalblog.domain.Education;
 import personalblog.domain.Interest;
 import personalblog.domain.Person;
+import personalblog.service.EducationService;
 import personalblog.service.InterestService;
 import personalblog.service.PersonService;
 import personalblog.service.impl.PersonServiceImp;
@@ -14,10 +16,24 @@ import java.util.List;
  */
 public class PersonAction extends ActionSupport{
 
+    private EducationService educationService;
     private PersonService personService;
     private InterestService interestService;
     private List<Interest> interests;
+    private List<Education> educations;
     private Person person;
+
+    public List<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(List<Education> educations) {
+        this.educations = educations;
+    }
+
+    public void setEducationService(EducationService educationService) {
+        this.educationService = educationService;
+    }
 
     public PersonService getPersonService() {
         return personService;
@@ -47,11 +63,11 @@ public class PersonAction extends ActionSupport{
         this.interestService = interestService;
     }
 
-    public List<Interest> getInterest() {
+    public List<Interest> getInterests() {
         return interests;
     }
 
-    public void setInterest(List<Interest> interests) {
+    public void setInterests(List<Interest> interests) {
         this.interests = interests;
     }
 
@@ -65,12 +81,18 @@ public class PersonAction extends ActionSupport{
         setPerson(personService.getPerson().get(0));
         System.out.println(this.getPerson().getPerson_Email());
         showinterest();
+        showedu();
         return SUCCESS;
     }
 
     public String showinterest(){
-            setInterest(interestService.getinterests());
+            setInterests(interestService.getinterests());
           return SUCCESS;
+    }
+
+    public String showedu(){
+        setEducations(educationService.geteducations());
+        return  SUCCESS;
     }
 
 }

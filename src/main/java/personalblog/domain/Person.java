@@ -32,6 +32,18 @@ public class Person {
     @JoinColumn(name="interest_person_id", referencedColumnName = "person_id")
     private Set<Interest> interests=new HashSet<Interest>();
 
+    @OneToMany(targetEntity = Education.class)
+    @JoinColumn(name="edu_person_id", referencedColumnName = "person_id")
+    private Set<Education> educations=new HashSet<Education>();
+
+    public Set<Education> getEducations() {
+        return educations;
+    }
+
+    public void setEducations(Set<Education> educations) {
+        this.educations = educations;
+    }
+
     public Set<Interest> getInterests() {
         return interests;
     }

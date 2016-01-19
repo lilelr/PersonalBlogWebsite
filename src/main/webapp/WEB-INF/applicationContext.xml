@@ -31,6 +31,7 @@
                 <!-- 以下用来列出所有的PO类-->
                 <value>personalblog.domain.Person</value>
                 <value>personalblog.domain.Interest</value>
+                <value>personalblog.domain.Education</value>
             </list>
         </property>
         <!-- 定义Hibernate SessionFactory的属性 -->
@@ -52,8 +53,16 @@
           p:personDao-ref="personDao"/>
     <bean id="personDao" class="personalblog.dao.impl.PersonDaoImp"
           p:sessionFactory-ref="sessionFactory"/>
-    <bean id="interestService" class="personalblog.service.impl.InterestServiceImp" p:interestDao-ref="interestDao"/>
-    <bean id="interestDao" class="personalblog.dao.impl.InterestDaoImp" p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="interestService" class="personalblog.service.impl.InterestServiceImp"
+          p:interestDao-ref="interestDao"/>
+    <bean id="interestDao" class="personalblog.dao.impl.InterestDaoImp"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="educationService" class="personalblog.service.impl.EducationServiceImp"
+          p:educationDao-ref="educationDao"/>
+    <bean id="educationDao" class="personalblog.dao.impl.EducationDaoImp"
+          p:sessionFactory-ref="sessionFactory"/>
 
     <!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
     <!-- 该类是PlatformTransactionManager接口针对采用Hibernate的特定实现类 -->
@@ -79,10 +88,12 @@
         <!-- 配置一个切入点 -->
         <aop:pointcut id="personPointcut" expression="bean(personService)"/>
         <aop:pointcut id="interestPointcut" expression="bean(interestService)"/>
+        <aop:pointcut id="educationPointcut" expression="bean(educationService)"/>
         <!-- 指定在myPointcut切入点应用txAdvice事务增强处理 -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="personPointcut"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="interestPointcut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="educationPointcut"/>
     </aop:config>
 
 

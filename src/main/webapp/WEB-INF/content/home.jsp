@@ -112,12 +112,12 @@
                     <%--爱打篮球，爱跑步，爱读书。<br>--%>
                     <%--喜欢骑行，大二暑假期间曾和小伙伴们花7天时间从秦皇岛骑到大连。<br>--%>
                     <%--喜欢弹吉他，虽然弹得不怎么样，却依然自我陶醉。</p>--%>
-                <p><s:iterator value="interest" id="i">
+                <p><s:iterator value="interests" id="i">
                     <s:property value="interest_content"/><br>
                 </s:iterator>
                 </p>
 
-                <p class="p-text">你的获得，决定了你过怎么样的生活。而你的付出，决定了你生命的意义。</p>
+                <p class="p-text">${person.person_enlighten}</p>
             </div>
             <div class="col-md-6 about-right-grid">
                 <a class="popup-with-zoom-anim" href="#small-dialog"><img src="/images/mguitar.jpg"
@@ -159,29 +159,19 @@
         <div class="bottom-grid">
             <div class="col-md-6 bottom-grid-left">
                 <h3>教育背景</h3>
-
+                <s:iterator value="educations">
                 <div class="grids">
                     <div class="year text-center">
-                        <h5>2015</h5>
+                        <h5><s:date name= "edu_time_begin" nice="false" format="yyyy"/></h5>
                     </div>
                     <div class="qualification">
-                        <h4>软件工程专业学习</h4>
+                        <h4>${edu_major}专业${edu_content}</h4>
 
-                        <p>北京航空航天大学软件学院</p>
+                        <p>${edu_school}</p>
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="grids">
-                    <div class="year text-center">
-                        <h5>2014</h5>
-                    </div>
-                    <div class="qualification">
-                        <h4>软件工程专业学习</h4>
-
-                        <p>北京航空航天大学软件学院</p>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                </s:iterator>
 
 
             </div>
@@ -408,12 +398,12 @@
                 <h3>给我留言</h3>
 
                 <div class="stripb"></div>
-                <form>
-                    <input type="text" value="大侠请留名" onfocus="this.value = '';"
+                <form action="sendmsg.action" method="post">
+                    <input type="text" name="visitorname" value="大侠请留名" onfocus="this.value = '';"
                            onblur="if (this.value == '') {this.value = 'Name';}" required="">
-                    <input type="text" value="E-mail" onfocus="this.value = '';"
+                    <input type="text" name="visitoremail" value="E-mail" onfocus="this.value = '';"
                            onblur="if (this.value == '') {this.value = 'E-mail';}" required="">
-                    <textarea type="text" onfocus="this.value = '';"
+                    <textarea type="text" name="visitormsg" onfocus="this.value = '';"
                               onblur="if (this.value == '') {this.value = '留言...';}" required="">留言...</textarea>
                     <input type="submit" value="完成">
                 </form>

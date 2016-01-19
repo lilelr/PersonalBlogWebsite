@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE validators PUBLIC
+        "-//Apache Struts//XWork Validator 1.0.3//EN"
+        "http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+    <field name="visitorname">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>大侠请留名</message>
+        </field-validator>
+    </field>
+    
+    <field name="visitoremail">
+        <field-validator type="email">
+            <message>电子邮件地址必须有效</message>
+        </field-validator>
+    </field>
+    <field name="visitormsg">
+        <field-validator type="requiredstring">
+            <message>留言...</message>
+        </field-validator>
+    </field>
+</validators>
