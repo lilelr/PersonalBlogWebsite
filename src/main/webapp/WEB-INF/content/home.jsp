@@ -165,7 +165,7 @@
                         <h5><s:date name= "edu_time_begin" nice="false" format="yyyy"/></h5>
                     </div>
                     <div class="qualification">
-                        <h4>${edu_major}专业${edu_content}</h4>
+                        <h4>${edu_major}专业热火朝天地${edu_content}</h4>
 
                         <p>${edu_school}</p>
                     </div>
