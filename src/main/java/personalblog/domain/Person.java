@@ -40,6 +40,17 @@ public class Person {
     @JoinColumn(name = "visitor_person_id",referencedColumnName = "person_id")
     private  Set<Visitor> visitors=new HashSet<Visitor>();
 
+    @OneToMany(targetEntity = Honor.class,mappedBy = "person")
+    private Set<Honor> honors=new HashSet<Honor>();
+
+    public Set<Honor> getHonors() {
+        return honors;
+    }
+
+    public void setHonors(Set<Honor> honors) {
+        this.honors = honors;
+    }
+
     public Set<Visitor> getVisitors() {
         return visitors;
     }

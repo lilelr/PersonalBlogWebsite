@@ -2,9 +2,11 @@ package personalblog.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import personalblog.domain.Education;
+import personalblog.domain.Honor;
 import personalblog.domain.Interest;
 import personalblog.domain.Person;
 import personalblog.service.EducationService;
+import personalblog.service.HonorService;
 import personalblog.service.InterestService;
 import personalblog.service.PersonService;
 import personalblog.service.impl.PersonServiceImp;
@@ -16,12 +18,18 @@ import java.util.List;
  */
 public class PersonAction extends ActionSupport{
 
+    private HonorService honorService;
     private EducationService educationService;
     private PersonService personService;
     private InterestService interestService;
     private List<Interest> interests;
     private List<Education> educations;
+    private List<Honor> honors;
     private Person person;
+
+    public void setHonorService(HonorService honorService) {
+        this.honorService = honorService;
+    }
 
     public List<Education> getEducations() {
         return educations;
@@ -71,6 +79,14 @@ public class PersonAction extends ActionSupport{
         this.interests = interests;
     }
 
+    public List<Honor> getHonors() {
+        return honors;
+    }
+
+    public void setHonors(List<Honor> honors) {
+        this.honors = honors;
+    }
+
     public String showperson(){
         if (personService != null){
             System.out.println("服务"+personService);
@@ -82,6 +98,7 @@ public class PersonAction extends ActionSupport{
         System.out.println(this.getPerson().getPerson_Email());
         showinterest();
         showedu();
+        showhonor();
         return SUCCESS;
     }
 
@@ -94,5 +111,11 @@ public class PersonAction extends ActionSupport{
         setEducations(educationService.geteducations());
         return  SUCCESS;
     }
+
+    public String showhonor(){
+        setHonors(honorService.getHonors());
+        return SUCCESS;
+    }
+
 
 }

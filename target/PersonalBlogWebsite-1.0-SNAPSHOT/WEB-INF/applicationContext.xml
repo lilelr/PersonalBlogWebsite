@@ -34,6 +34,7 @@
                 <value>personalblog.domain.Education</value>
                 <value>personalblog.domain.Visitor</value>
                 <value>personalblog.domain.Message</value>
+                <value>personalblog.domain.Honor</value>
             </list>
         </property>
         <!-- 定义Hibernate SessionFactory的属性 -->
@@ -76,6 +77,11 @@
     <bean id="messageDao" class="personalblog.dao.impl.MessageDaoImp"
           p:sessionFactory-ref="sessionFactory"/>
 
+    <bean id="honorService" class="personalblog.service.impl.HonorServiceImp"
+          p:honorDao-ref="honorDao"/>
+    <bean id="honorDao" class="personalblog.dao.impl.HonorDaoImp"
+          p:sessionFactory-ref="sessionFactory"/>
+
     <!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
     <!-- 该类是PlatformTransactionManager接口针对采用Hibernate的特定实现类 -->
     <!-- 配置HibernateTransactionManager需依赖注入SessionFactory -->
@@ -103,6 +109,7 @@
         <aop:pointcut id="educationPointcut" expression="bean(educationService)"/>
         <aop:pointcut id="visitorPointcut" expression="bean(visitorService)"/>
         <aop:pointcut id="msgPointcut" expression="bean(messageService)"/>
+        <aop:pointcut id="honorPointcut" expression="bean(honorService)"/>
         <!-- 指定在myPointcut切入点应用txAdvice事务增强处理 -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="personPointcut"/>
@@ -110,6 +117,7 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="educationPointcut"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="visitorPointcut"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="msgPointcut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="honorPointcut"/>
     </aop:config>
 
 

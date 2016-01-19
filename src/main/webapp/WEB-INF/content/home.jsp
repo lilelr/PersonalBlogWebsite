@@ -178,26 +178,28 @@
             <div class="col-md-6 bottom-grid-right">
                 <h3>荣誉</h3>
 
+                <s:iterator value="honors">
                 <div class="grids">
                     <div class="year year2 text-center">
-                        <h5>2015</h5>
+                        <h5><s:date name= "honor_date" nice="false" format="yyyy"/></h5>
                     </div>
                     <div class="qualification">
-                        <h4>北京航空航天大学第25届“冯如杯”学生学术科技作品竞赛二等奖</h4>
+                        <h4>${honor_content}</h4>
                         <!--<p>我爱冯如</p>-->
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="grids">
-                    <div class="year year2 text-center">
-                        <h5>2014</h5>
-                    </div>
-                    <div class="qualification">
-                        <h4>2014全国高校移动互联网应用开发创新大赛三等奖</h4>
-                        <!--<p>i2c Inc</p>-->
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
+                </s:iterator>
+                <%--<div class="grids">--%>
+                    <%--<div class="year year2 text-center">--%>
+                        <%--<h5>2014</h5>--%>
+                    <%--</div>--%>
+                    <%--<div class="qualification">--%>
+                        <%--<h4>2014全国高校移动互联网应用开发创新大赛三等奖</h4>--%>
+                        <%--<!--<p>i2c Inc</p>-->--%>
+                    <%--</div>--%>
+                    <%--<div class="clearfix"></div>--%>
+                <%--</div>--%>
 
 
             </div>
