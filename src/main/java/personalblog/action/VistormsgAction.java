@@ -3,6 +3,7 @@ package personalblog.action;
 import com.opensymphony.xwork2.ActionSupport;
 import personalblog.domain.Message;
 import personalblog.domain.Visitor;
+import personalblog.service.MessageService;
 import personalblog.service.VisitorService;
 
 import java.util.HashSet;
@@ -14,6 +15,7 @@ public class VistormsgAction extends ActionSupport{
 
 
     private VisitorService visitorService;
+    private MessageService messageService;
 
 
     private String visitorname;
@@ -48,16 +50,19 @@ public class VistormsgAction extends ActionSupport{
         this.visitorService = visitorService;
     }
 
+    public void setMessageService(MessageService messageService) {
+        this.messageService = messageService;
+    }
+
     public String sendmsg(){
         Visitor visitor=new Visitor();
-        HashSet<Message> tempMessages=new HashSet<Message>();
         Message tempmsg=new Message();
         tempmsg.setMsg_content(visitormsg);
-        tempMessages.add(tempmsg);
-        visitor.setMessages(tempMessages);
         visitor.setVisitor_Email(visitoremail);
         visitor.setVisitor_name(visitorname);
         visitorService.save(visitor);
+        tempmsg.setVisitor(visitor);
+        messageService.save(tempmsg);
         return SUCCESS;
     }
 }
