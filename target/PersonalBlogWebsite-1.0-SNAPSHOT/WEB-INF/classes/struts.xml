@@ -14,6 +14,16 @@
                         <result name="success">/WEB-INF/content/home.jsp</result>
                 </action>
                 <!-- 让用户直接访问该应用时列出所有视图页面 -->
+
+                <action name="resumedl" class="personalblog.action.ResumeDownloadAction">
+                        <param name="resumePath">/file/李乐乐个人简历.doc</param>
+                    <result type="stream">
+                        <param name="contentType">application/msword</param>
+                       <param name="inputName">resume</param>
+                        <param name="contentDisposition">filename="lilele_resume.doc"</param>
+                        <param name="bufferSize">4096</param>
+                    </result>
+                </action>
                 <action name="*">
                         <result>/WEB-INF/content/{1}.jsp</result>
                 </action>

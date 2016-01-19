@@ -88,7 +88,7 @@
                 <h1>${person.person_real_name}</h1>
 
                 <h2>${person.person_position}</h2>
-                <a href="#" class="hvr-bounce-to-right">下载我的简历</a>
+                <a href="/resumedl" class="hvr-bounce-to-right">下载我的简历</a>
             </div>
         </div>
     </div>
