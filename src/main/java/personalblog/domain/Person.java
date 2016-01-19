@@ -36,6 +36,18 @@ public class Person {
     @JoinColumn(name="edu_person_id", referencedColumnName = "person_id")
     private Set<Education> educations=new HashSet<Education>();
 
+    @OneToMany(targetEntity = Visitor.class)
+    @JoinColumn(name = "visitor_person_id",referencedColumnName = "person_id")
+    private  Set<Visitor> visitors=new HashSet<Visitor>();
+
+    public Set<Visitor> getVisitors() {
+        return visitors;
+    }
+
+    public void setVisitors(Set<Visitor> visitors) {
+        this.visitors = visitors;
+    }
+
     public Set<Education> getEducations() {
         return educations;
     }
