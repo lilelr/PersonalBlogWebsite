@@ -40,7 +40,7 @@
     <!-- start-smoth-scrolling -->
 </head>
 <body>
-<s:debug/>
+<%--<s:debug/>--%>
 <div class="header">
     <div class="container">
         <div class="logo">

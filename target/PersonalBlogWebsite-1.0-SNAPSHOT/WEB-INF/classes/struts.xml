@@ -16,7 +16,7 @@
                 <!-- 让用户直接访问该应用时列出所有视图页面 -->
 
                 <action name="resumedl" class="personalblog.action.ResumeDownloadAction">
-                        <param name="resumePath">/file/李乐乐个人简历.doc</param>
+                        <param name="resumePath">/file/lileleResume.doc</param>
                     <result type="stream">
                         <param name="contentType">application/msword</param>
                        <param name="inputName">resume</param>

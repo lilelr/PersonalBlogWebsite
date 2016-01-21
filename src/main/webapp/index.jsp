@@ -11,7 +11,8 @@
     <title></title>
   </head>
   <body>
-  <jsp:forward page="/showperson" />
-    <h1>小花</h1>
+  <META HTTP-EQUIV="Refresh" CONTENT="0;URL=max/showperson">
+
+  <h1>小花</h1>
   </body>
 </html>
