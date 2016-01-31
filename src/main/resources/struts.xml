@@ -4,35 +4,51 @@
         "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
-        <!-- 配置了系列常量 -->
-        <constant name="struts.i18n.encoding" value="UTF-8"/>
-        <constant name="struts.enable.DynamicMethodInvocation" value="false" />
-        <constant name="struts.devMode" value="true"/>
-        <package name="lee" extends="struts-default">
-                <action name="showperson" class="personalblog.action.PersonAction"
-                        method="showperson">
-                        <result name="success">/WEB-INF/content/home.jsp</result>
-                </action>
-                <!-- 让用户直接访问该应用时列出所有视图页面 -->
+    <!-- 配置了系列常量 -->
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+    <constant name="struts.devMode" value="true"/>
+    <package name="lee" extends="struts-default">
+        <action name="showperson" class="personalblog.action.PersonAction"
+                method="showperson">
+            <result name="success">/WEB-INF/content/home.jsp</result>
+        </action>
+        <!-- 让用户直接访问该应用时列出所有视图页面 -->
 
-                <action name="resumedl" class="personalblog.action.ResumeDownloadAction">
-                        <param name="resumePath">/file/lileleResume.doc</param>
-                    <result type="stream">
-                        <param name="contentType">application/msword</param>
-                       <param name="inputName">resume</param>
-                        <param name="contentDisposition">filename="lilele_resume.doc"</param>
-                        <param name="bufferSize">4096</param>
-                    </result>
-                </action>
+        <action name="resumedl" class="personalblog.action.ResumeDownloadAction">
+            <param name="resumePath">/file/lileleResume.doc</param>
+            <result type="stream">
+                <param name="contentType">application/msword</param>
+                <param name="inputName">resume</param>
+                <param name="contentDisposition">filename="lilele_resume.doc"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
 
-                <action name="sendmsg" class="personalblog.action.VistormsgAction"
-                        method="sendmsg">
-                    <result name="success" type="redirectAction">
-                        <param name="actionName">showperson</param>
-                    </result>
-                </action>
-                <action name="*">
-                        <result>/WEB-INF/content/{1}.jsp</result>
-                </action>
-        </package>
+        <action name="sendmsg" class="personalblog.action.VistormsgAction"
+                method="sendmsg">
+            <result name="success" type="redirectAction">
+                <param name="actionName">showperson</param>
+            </result>
+        </action>
+        <action name="ckeditorUpload" class="personalblog.action.UploadAction"
+                method="uploadphoto">
+            <result name="success">/WEB-INF/content/home.jsp</result>
+            <!--<result name="input"-->
+        </action>
+
+        <action name="showUpload" class="personalblog.action.UploadAction"
+                method="showupload">
+            <result name="success">/WEB-INF/content/blog/editblog.jsp</result>
+        </action>
+
+        <action name="listpages" class="personalblog.action.BlogAction"
+                method="listpages">
+            <result name="success">/WEB-INF/content/blog/blog.jsp</result>
+        </action>
+
+        <action name="*">
+            <result>/WEB-INF/content/{1}.jsp</result>
+        </action>
+    </package>
 </struts>
