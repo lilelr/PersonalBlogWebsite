@@ -1,13 +1,9 @@
 package personalblog.domain;
 
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.GenerationTime;
 import personalblog.abstractclass.Pagefooter;
 import personalblog.abstractclass.Pageheader;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.Date;
 
 /**
@@ -19,7 +15,7 @@ public class Blog {
     @Id @Column(name="blog_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int blog_id;
-    private String blog_tilte;
+    private String blog_title;
     private String blog_content;
     @Temporal(TemporalType.DATE)
     private Date blog_time;
@@ -44,12 +40,12 @@ public class Blog {
     }
 
 
-    public String getBlog_tilte() {
-        return blog_tilte;
+    public String getBlog_title() {
+        return blog_title;
     }
 
-    public void setBlog_tilte(String blog_tilte) {
-        this.blog_tilte = blog_tilte;
+    public void setBlog_title(String blog_title) {
+        this.blog_title = blog_title;
     }
 
     public String getBlog_content() {

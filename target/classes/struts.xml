@@ -38,8 +38,8 @@
             <result name="success">/WEB-INF/content/blog/editblog.jsp</result>
         </action>
 
-        <action name="listpages" class="personalblog.action.BlogAction"
-                method="listpages">
+        <action name="saveblog" class="personalblog.action.BlogAction"
+                method="saveblog">
             <result name="success">/WEB-INF/content/blog/blog.jsp</result>
         </action>
         <action name="initconfig" class="personalblog.action.ueditorAction"

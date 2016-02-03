@@ -15,8 +15,10 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>完整demo</title>
+    <title>新建博客</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
+    <script src="/js/bootstrap.js"></script>
     <script type="text/javascript" charset="utf-8" src="/js/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
@@ -32,8 +34,17 @@
 </head>
 <body>
 <div>
-    <h1>完整demo</h1>
-    <form action="listpages">
+    <h1>编辑博客</h1>
+
+    <form action="saveblog">
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon1">标题</span>
+            <input name="title" type="text" class="form-control" placeholder="不能为空" aria-describedby="basic-addon1">
+        </div>
+        <div class="input-group">
+            <span class="input-group-addon" id="basic-addon2">标签</span>
+            <input name="tag" type="text" class="form-control" placeholder="随感" aria-describedby="basic-addon2">
+        </div>
     <script id="editor" name="content" value="getContent()" type="text/plain" style="width:1024px;height:500px;"></script>
         <button type="submit"  class="btn btn-default">保存并提交</button>
     </form>

@@ -44,7 +44,9 @@
 <div class="header">
     <div class="container">
         <div class="logo">
-            <a href="#"><h1>${person.person_user_name}</h1></a>
+            <%--<a href="#"><h1>${person.person_user_name}</h1></a>--%>
+                <a href="#"><h1>银灯玉箫</h1></a>
+
         </div>
         <div class="navigation">
             <nav class="navbar navbar-default">

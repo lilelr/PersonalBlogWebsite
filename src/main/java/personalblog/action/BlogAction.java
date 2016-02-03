@@ -17,6 +17,8 @@ public class BlogAction extends ActionSupport{
     private BlogService blogService;
     private BlogCatergoryService blogCatergoryService;
     private String content;
+    private String title;
+    private String tag;
 
     private Blog blog;
 
@@ -36,6 +38,22 @@ public class BlogAction extends ActionSupport{
         this.content = content;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
     public void setBlogService(BlogService blogService) {
         this.blogService = blogService;
     }
@@ -45,18 +63,26 @@ public class BlogAction extends ActionSupport{
     }
 
     public String listpages() throws Exception{
+
+        return SUCCESS;
+    }
+
+    public String saveblog() throws Exception{
         System.out.println(getContent());
         LiteratureBlogFactory literatureBlogFactory=new LiteratureBlogFactory();
         Blog tblog=new Blog();
-        tblog.setBlog_tag("杂感");
+        tblog.setBlog_tag(getTag());
         tblog.setBlog_content(getContent());
         Blog endBlog = literatureBlogFactory.createBlog(tblog);
-        endBlog.setBlog_tilte("天人合一");
+        endBlog.setBlog_title(getTitle());
         endBlog.setBlog_time(new Date());
 
         List<BlogCatergory> blogCatergories=blogCatergoryService.getblogcatergories();
         endBlog.setBlogCatergory(blogCatergories.get(0));
-        blogService.save(endBlog);
+        Integer blog_id = blogService.save(endBlog);
+        System.out.println("主键是"+blog_id);
+        Blog getBlog = blogService.getById(blog_id);
+        this.setBlog(getBlog);
 //        this.setBlog(tblog);
 
         return SUCCESS;
