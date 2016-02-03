@@ -1,17 +1,35 @@
 package personalblog.domain;
 
+import personalblog.abstractclass.Pagefooter;
+import personalblog.abstractclass.Pageheader;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Date;
 
 /**
  * Created by yuxiao on 1/31/16.
  */
+@Entity
+@Table(name = "blog")
 public class Blog {
-
+    @Id @Column(name="blog_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int blog_id;
-    private int blog_person_id;
     private String blog_tilte;
     private String blog_content;
+    @Temporal(TemporalType.DATE)
     private Date blog_time;
+    private String blog_tag;
+
+    private Pageheader pageheader;
+    private Pagefooter pagefooter;
+
+    @ManyToOne(targetEntity = BlogCatergory.class)
+    @JoinColumn(name = "blog_catergoryid",referencedColumnName = "blog_catergory_id")
+    private BlogCatergory blogCatergory;
+
 
     public int getBlog_id() {
         return blog_id;
@@ -21,13 +39,6 @@ public class Blog {
         this.blog_id = blog_id;
     }
 
-    public int getBlog_person_id() {
-        return blog_person_id;
-    }
-
-    public void setBlog_person_id(int blog_person_id) {
-        this.blog_person_id = blog_person_id;
-    }
 
     public String getBlog_tilte() {
         return blog_tilte;
@@ -51,5 +62,37 @@ public class Blog {
 
     public void setBlog_time(Date blog_time) {
         this.blog_time = blog_time;
+    }
+
+    public String getBlog_tag() {
+        return blog_tag;
+    }
+
+    public void setBlog_tag(String blog_tag) {
+        this.blog_tag = blog_tag;
+    }
+
+    public Pageheader getPageheader() {
+        return pageheader;
+    }
+
+    public void setPageheader(Pageheader pageheader) {
+        this.pageheader = pageheader;
+    }
+
+    public Pagefooter getPagefooter() {
+        return pagefooter;
+    }
+
+    public void setPagefooter(Pagefooter pagefooter) {
+        this.pagefooter = pagefooter;
+    }
+
+    public BlogCatergory getBlogCatergory() {
+        return blogCatergory;
+    }
+
+    public void setBlogCatergory(BlogCatergory blogCatergory) {
+        this.blogCatergory = blogCatergory;
     }
 }

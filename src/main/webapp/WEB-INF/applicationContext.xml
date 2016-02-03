@@ -35,6 +35,8 @@
                 <value>personalblog.domain.Visitor</value>
                 <value>personalblog.domain.Message</value>
                 <value>personalblog.domain.Honor</value>
+                <value>personalblog.domain.Blog</value>
+                <value>personalblog.domain.BlogCatergory</value>
             </list>
         </property>
         <!-- 定义Hibernate SessionFactory的属性 -->
@@ -82,6 +84,16 @@
     <bean id="honorDao" class="personalblog.dao.impl.HonorDaoImp"
           p:sessionFactory-ref="sessionFactory"/>
 
+    <bean id="blogCatergoryService" class="personalblog.service.impl.BlogCatergoryServiceImp"
+          p:blogCatergoryDao-ref="blogCatergoryDao"/>
+    <bean id="blogCatergoryDao" class="personalblog.dao.impl.BlogCatergoryDaoImp"
+          p:sessionFactory-ref="sessionFactory"/>
+
+    <bean id="blogService" class="personalblog.service.impl.BlogServiceImp"
+          p:blogDao-ref="blogDao"/>
+    <bean id="blogDao" class="personalblog.dao.impl.BlogDaoImp"
+          p:sessionFactory-ref="sessionFactory"/>
+
     <!-- 配置Hibernate的局部事务管理器，使用HibernateTransactionManager类 -->
     <!-- 该类是PlatformTransactionManager接口针对采用Hibernate的特定实现类 -->
     <!-- 配置HibernateTransactionManager需依赖注入SessionFactory -->
@@ -110,6 +122,8 @@
         <aop:pointcut id="visitorPointcut" expression="bean(visitorService)"/>
         <aop:pointcut id="msgPointcut" expression="bean(messageService)"/>
         <aop:pointcut id="honorPointcut" expression="bean(honorService)"/>
+        <aop:pointcut id="blogCatergoryPointcut" expression="bean(blogCatergoryService)"/>
+        <aop:pointcut id="blogPointcut" expression="bean(blogService)"/>
         <!-- 指定在myPointcut切入点应用txAdvice事务增强处理 -->
         <aop:advisor advice-ref="txAdvice"
                      pointcut-ref="personPointcut"/>
@@ -118,6 +132,8 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="visitorPointcut"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="msgPointcut"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="honorPointcut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="blogCatergoryPointcut"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="blogPointcut"/>
     </aop:config>
 
 

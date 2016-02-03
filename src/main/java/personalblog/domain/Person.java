@@ -43,6 +43,9 @@ public class Person {
     @OneToMany(targetEntity = Honor.class,mappedBy = "person")
     private Set<Honor> honors=new HashSet<Honor>();
 
+    @OneToMany(targetEntity = BlogCatergory.class,mappedBy = "person")
+    private Set<BlogCatergory> blogCatergories=new HashSet<BlogCatergory>();
+
     public Set<Honor> getHonors() {
         return honors;
     }
@@ -193,5 +196,13 @@ public class Person {
 
     public void setPerson_enlighten(String person_enlighten) {
         this.person_enlighten = person_enlighten;
+    }
+
+    public Set<BlogCatergory> getBlogCatergories() {
+        return blogCatergories;
+    }
+
+    public void setBlogCatergories(Set<BlogCatergory> blogCatergories) {
+        this.blogCatergories = blogCatergories;
     }
 }

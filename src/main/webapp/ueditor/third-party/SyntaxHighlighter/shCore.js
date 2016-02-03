@@ -2698,7 +2698,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 
 	function Brush()
 	{
-		var keywords =	'abstract as base bool break byte case catch char checked class const ' +
+		var keywords =	'abstractclass as base bool break byte case catch char checked class const ' +
 						'continue decimal default delegate do double else enum event explicit volatile ' +
 						'extern false finally fixed float for foreach get goto if implicit in int ' +
 						'interface internal is lock long namespace new null object operator out ' +
@@ -2973,7 +2973,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 
 	function Brush()
 	{
-		var keywords =	'abstract assert boolean break byte case catch char class const ' +
+		var keywords =	'abstractclass assert boolean break byte case catch char class const ' +
 						'continue default do double else enum extends ' +
 						'false final finally float for goto if implements import ' +
 						'instanceof int interface long native new null ' +
@@ -3020,7 +3020,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 						+ 'Float Integer Long Number Short String Void'
 						;
 
-		var keywords = 'abstract after and as assert at before bind bound break catch class '
+		var keywords = 'abstractclass after and as assert at before bind bound break catch class '
 						+ 'continue def delete else exclusive extends false finally first for from '
 						+ 'function if import in indexof init insert instanceof into inverse last '
 						+ 'lazy mixin mod nativearray new not null on or override package postinit '
@@ -3204,7 +3204,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 						'strpos strptime strrchr strrev strripos strrpos strspn strstr strtok strtolower strtotime '+
 						'strtoupper strtr strval substr substr_compare';
 
-		var keywords =	'abstract and array as break case catch cfunction class clone const continue declare default die do ' +
+		var keywords =	'abstractclass and array as break case catch cfunction class clone const continue declare default die do ' +
 						'else elseif enddeclare endfor endforeach endif endswitch endwhile extends final for foreach ' +
 						'function global goto if implements include include_once interface instanceof insteadof namespace new ' +
 						'old_function or private protected public return require require_once static switch ' +
@@ -3485,7 +3485,7 @@ typeof(exports) != 'undefined' ? exports.SyntaxHighlighter = SyntaxHighlighter :
 		// Contributed by Yegor Jbanov and David Bernard.
 	
 		var keywords =	'val sealed case def true trait implicit forSome import match object null finally super ' +
-						'override try lazy for var catch throw type extends class while with new final yield abstract ' +
+						'override try lazy for var catch throw type extends class while with new final yield abstractclass ' +
 						'else do if return protected private this package false';
 
 		var keyops =	'[_:=><%#@]+';
