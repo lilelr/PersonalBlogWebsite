@@ -1,5 +1,7 @@
 package personalblog.domain;
 
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
 import personalblog.abstractclass.Pagefooter;
 import personalblog.abstractclass.Pageheader;
 
@@ -23,7 +25,9 @@ public class Blog {
     private Date blog_time;
     private String blog_tag;
 
+    @Transient
     private Pageheader pageheader;
+    @Transient
     private Pagefooter pagefooter;
 
     @ManyToOne(targetEntity = BlogCatergory.class)
