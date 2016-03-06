@@ -17,9 +17,9 @@
 <head>
     <title>新建博客</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+    <script type="text/javascript" charset="utf-8" src="/js/jquery.min.js"></script>
     <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all"/>
     <script src="/js/bootstrap.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/js/jquery.min.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/ueditor/ueditor.all.min.js"> </script>
     <!--建议手动加在语言，避免在ie下有时因为加载语言失败导致编辑器加载失败-->

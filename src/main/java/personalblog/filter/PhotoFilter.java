@@ -20,7 +20,7 @@ public class PhotoFilter extends StrutsPrepareAndExecuteFilter {
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest request= (HttpServletRequest) req;
         String url=request.getRequestURI();
-        if(url.contains("controller.jsp")){
+        if(url.contains("controller.jsp")|| url.contains("ueditor")){
             req.setCharacterEncoding("UTF-8");
             res.setCharacterEncoding("UTF-8");
             chain.doFilter(req,res);
