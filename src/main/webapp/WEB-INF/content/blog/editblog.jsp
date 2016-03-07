@@ -31,7 +31,7 @@
             width:100%;
         }
     </style>
-</head>
+</head>1
 <body>
 <div>
     <h1>编辑博客</h1>
