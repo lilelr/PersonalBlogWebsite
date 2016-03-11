@@ -18,7 +18,7 @@
     <div class="header container">
         <div class="logo">
             <a href="#">
-                <h1>银灯玉箫</h1>
+                <img src="/images/yuntianhe.jpg" alt="" class="img-circle"/>
             </a>
         </div>
 
@@ -45,7 +45,6 @@
             </nav>
             <div class="clearfix"></div>
         </div>
-
 
         <div class="search-bar">
             <input type="text" value="搜索" onfocus="this.value='';"

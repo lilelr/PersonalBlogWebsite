@@ -88,4 +88,7 @@ public class BlogAction extends ActionSupport{
         return SUCCESS;
     }
 
+    public String blogindex() throws Exception {
+        return "success";
+    }
 }

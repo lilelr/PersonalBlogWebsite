@@ -33,9 +33,12 @@
         </action>
 
 
-        <action name="showUpload" class="personalblog.action.UploadAction"
-                method="showupload">
+        <action name="blogedit" class="personalblog.action.EditBlogAction"
+                method="editblog">
             <result name="success">/WEB-INF/content/blog/editblog.jsp</result>
+        </action>
+        <action name="showblogindex" class="personalblog.action.BlogAction" method="blogindex">
+            <result name="success">//WEB-INF/content/blog/blogindex.jsp</result>
         </action>
 
         <action name="saveblog" class="personalblog.action.BlogAction"
