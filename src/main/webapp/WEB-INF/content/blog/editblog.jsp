@@ -31,7 +31,7 @@
             width:100%;
         }
     </style>
-</head>1
+</head>
 <body>
 <div>
     <h1>编辑博客</h1>
@@ -45,8 +45,8 @@
             <span class="input-group-addon" id="basic-addon2">标签</span>
             <input name="tag" type="text" class="form-control" placeholder="随感" aria-describedby="basic-addon2">
         </div>
-    <script id="editor" name="content" value="getContent()" type="text/plain" style="width:1024px;height:500px;"></script>
-        <button type="submit"  class="btn btn-default">保存并提交</button>
+    <script id="editor" name="content" value="getContent()" type="text/plain" style="width:892px;height:600px;margin-left:200px"></script>
+        <button type="submit"  class="btn btn-default" style="margin-left:200px">保存并提交</button>
     </form>
 </div>
 <div id="btns">
