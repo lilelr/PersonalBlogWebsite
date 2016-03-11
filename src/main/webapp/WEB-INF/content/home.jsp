@@ -44,9 +44,9 @@
 <div class="header">
     <div class="container">
         <div class="logo">
-            <%--<a href="#"><h1>${person.person_user_name}</h1></a>--%>
-                <a href="#"><h1>银灯玉箫</h1></a>
-
+            <a href="#">
+                <img src="/images/yuntianhe.jpg" alt="" class="img-circle"/>
+            </a>
         </div>
         <div class="navigation">
             <nav class="navbar navbar-default">
@@ -76,9 +76,9 @@
             </nav>
         </div>
         <div class="search-bar">
-            <input type="text" value="搜索" onfocus="this.value = '';"
-                   onblur="if (this.value == '') {this.value = '搜索';}">
-            <input type="submit" value="">
+            <input type="text" value="搜索" onfocus="this.value='';"
+                   onblur="if (this.value == '') {this.value = '搜索';}"/>
+            <input type="submit" value=""/>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -135,25 +135,25 @@
 <link href="/css/popuo-box.css" rel="stylesheet" type="text/css" media="all"/>
 <script src="/js/jquery.magnific-popup.js" type="text/javascript"></script>
 <!---//pop-up-box---->
-<div id="small-dialog" class="mfp-hide">
-    <iframe src="//player.vimeo.com/video/38584262"></iframe>
-</div>
-<script>
-    $(document).ready(function () {
-        $('.popup-with-zoom-anim').magnificPopup({
-            type: 'inline',
-            fixedContentPos: false,
-            fixedBgPos: true,
-            overflowY: 'auto',
-            closeBtnInside: true,
-            preloader: false,
-            midClick: true,
-            removalDelay: 300,
-            mainClass: 'my-mfp-zoom-in'
-        });
+<%--<div id="small-dialog" class="mfp-hide">--%>
+    <%--<iframe src="#"></iframe>--%>
+<%--</div>--%>
+<%--<script>--%>
+    <%--$(document).ready(function () {--%>
+        <%--$('.popup-with-zoom-anim').magnificPopup({--%>
+            <%--type: 'inline',--%>
+            <%--fixedContentPos: false,--%>
+            <%--fixedBgPos: true,--%>
+            <%--overflowY: 'auto',--%>
+            <%--closeBtnInside: true,--%>
+            <%--preloader: false,--%>
+            <%--midClick: true,--%>
+            <%--removalDelay: 300,--%>
+            <%--mainClass: 'my-mfp-zoom-in'--%>
+        <%--});--%>
 
-    });
-</script>
+    <%--});--%>
+<%--</script>--%>
 <!----//fea-video---->
 <!--/about-->
 <div class="details">
@@ -438,8 +438,7 @@
 
         });
     </script>
-    <a href="#" id="toTop" style="display: block;"><span id="toTopHover"></span><span id="toTopHover"></span> <span
-            id="toTopHover" style="opacity: 1;"> </span></a>
+    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"> </span></a>
 </div>
 </body>
 </html>
