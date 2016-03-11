@@ -17,7 +17,7 @@
 <div class="container">
     <div class="header container">
         <div class="logo">
-            <a href="#">
+            <a href="/showperson">
                 <img src="/images/yuntianhe.jpg" alt="" class="img-circle"/>
             </a>
         </div>
@@ -36,8 +36,8 @@
                 <div id="navcollapse" class="collapse navbar-collapse nav-wil">
                     <nav class="cl-effect-7" id="cl-effect-7">
                         <ul class="nav navbar-nav">
-                            <li class="active"><a class="scroll" href="#">主页</a></li>
-                            <li><a href="#" class="scroll">博客目录</a></li>
+                            <li class="active"><a class="scroll" href="/showperson">主页</a></li>
+                            <li><a href="/showblogindex" class="scroll">博客目录</a></li>
                             <li><a href="#" class="scroll">留言</a></li>
                         </ul>
                     </nav>
@@ -57,9 +57,9 @@
         <div class="col-md-9">
             <section>
                 <div class="article-header">
-                    <h3>乱世出英雄</h3>
+                    <h3>${blog.blog_title}</h3>
                     <h4>
-                        <small>2016-3-06&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small>
+                        <small>${blog.blog_time}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</small>
                     </h4>
                 </div>
             </section>
@@ -118,8 +118,7 @@
     });
 </script>
 <div class="footer">
-    <a href="#" id="toTop" style="display: block;"><span id="toTopHover"></span><span id="toTopHover"></span> <span
-            id="toTopHover" style="opacity: 1;"> </span></a>
+    <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 </div>
 </body>
 </html>
