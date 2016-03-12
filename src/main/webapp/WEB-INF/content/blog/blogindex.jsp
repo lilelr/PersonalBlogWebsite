@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
@@ -63,35 +64,18 @@
     <div class="container index-content">
         <div class="content-grids">
             <div class="col-md-8 content-main">
+                <s:iterator value="blogList" var="blog">
                 <div class="content-grid-info">
 
-                    <img src="/images/post1.jpg" alt="" class= "img-rounded"/>
+                    <%--<img src="/images/post1.jpg" alt="" class= "img-rounded"/>--%>
 
                     <div class="post-info">
-                        <h4><a href="blog.html">多事之秋</a> 2016-03-11 / <span>27 评论</span></h4>
-                        <p>一场游戏一场梦。也许再也没有重新开始的机会……</p>
-                        <a href="blog.html"><span></span>阅读</a>
+                        <h4><a href="${pageContext.request.contextPath}/showblog?blog_id=${blog.blog_id}"><s:property value="blog_title"/></a> <s:date  name="blog_time" format="yyyy-MM-dd"/> / <span>27 评论</span></h4>
+                        <p><s:property value="extract"/>……</p>
+                        <a href="${pageContext.request.contextPath}/showblog?blog_id=${blog.blog_id}"><span></span>阅读</a>
                     </div>
                 </div>
-                <div class="content-grid-info">
-
-
-                    <div class="post-info">
-                        <h4><a href="blog.html">多事之秋</a> 2016-03-11 / <span>27 评论</span></h4>
-                        <p>一场游戏一场梦。也许再也没有重新开始的机会……</p>
-                        <a href="blog.html"><span></span>阅读</a>
-                    </div>
-                </div>
-                <div class="content-grid-info">
-
-                    <img src="/images/post1.jpg" alt="" class= "img-rounded"/>
-
-                    <div class="post-info">
-                        <h4><a href="blog.html">多事之秋</a> 2016-03-11 / <span>27 评论</span></h4>
-                        <p>一场游戏一场梦。也许再也没有重新开始的机会……</p>
-                        <a href="blog.html"><span></span>阅读</a>
-                    </div>
-                </div>
+                </s:iterator>
 
             </div>
             <div class="col-md-4 side-content">

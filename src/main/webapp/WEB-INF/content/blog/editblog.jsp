@@ -36,7 +36,7 @@
 <div>
     <h1>编辑博客</h1>
 
-    <form action="saveblog">
+    <form action="saveblog" id="blogform" method="post">
         <div class="input-group">
             <span class="input-group-addon" id="basic-addon1">标题</span>
             <input name="title" type="text" class="form-control" placeholder="不能为空" aria-describedby="basic-addon1">
@@ -46,7 +46,8 @@
             <input name="tag" type="text" class="form-control" placeholder="随感" aria-describedby="basic-addon2">
         </div>
     <script id="editor" name="content" value="getContent()" type="text/plain" style="width:892px;height:600px;margin-left:200px"></script>
-        <button type="submit"  class="btn btn-default" style="margin-left:200px">保存并提交</button>
+        <button type="submit"  class="btn btn-default" onclick="sendBlog()" style="margin-left:200px">保存并提交</button>
+        <input type="text" id="extract" name="extract" value="" style="visibility: hidden;"/>
     </form>
 </div>
 <div id="btns">
@@ -163,6 +164,10 @@
         arr.push(UE.getEditor('editor').getContentTxt());
         alert(arr.join("\n"));
     }
+    function getContentExtract(){
+        var extract = UE.getEditor('editor').getContentTxt().substr(0,50);
+        return extract;
+    }
     function hasContent() {
         var arr = [];
         arr.push("使用editor.hasContents()方法判断编辑器里是否有内容");
@@ -203,6 +208,16 @@
     function clearLocalData () {
         UE.getEditor('editor').execCommand( "clearlocaldata" );
         alert("已清空草稿箱")
+    }
+
+    function sendBlog(){
+        var extract=document.getElementById("extract");
+        extract.value = getContentExtract();
+//        console.log("fffff");
+//        alert(extract.value);
+        var content=document.getElementsByName("content");
+        content.value=getContent();
+        document.getElementById("blogform").submit();
     }
 </script>
 </body>

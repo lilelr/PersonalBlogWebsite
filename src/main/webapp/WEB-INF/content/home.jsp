@@ -64,6 +64,7 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a class="scroll" href="#home">主页 <span class="sr-only">(current)</span></a>
                             </li>
+                            <li><a href="/showblogindex">博客</a></li>
                             <li><a class="scroll" href="#about">关于我</a></li>
                             <li><a class="scroll" href="#skills">技能</a></li>
                             <li><a class="scroll" href="#portfolio">相册</a></li>

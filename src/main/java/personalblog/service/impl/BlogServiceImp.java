@@ -5,6 +5,7 @@ import personalblog.domain.Blog;
 import personalblog.service.BlogService;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by yuxiao on 2/3/16.
@@ -23,5 +24,13 @@ public class BlogServiceImp implements BlogService{
 
     public Blog getById(Integer id) {
         return blogDao.get(Blog.class,id);
+    }
+
+    public List<Blog> getAllBlogs() {
+        return blogDao.findAll(Blog.class);
+    }
+
+    public List<Blog> getAllBlog(){
+        return blogDao.findAll(Blog.class);
     }
 }

@@ -52,7 +52,7 @@ body a:hover{
 }
 
 .logo {
-    width: 23%;
+    width: 15%;
     float: left;
     text-align:center;
 }
@@ -71,7 +71,7 @@ body a:hover{
 }
 .navigation {
     float: left;
-    width: 52%;
+    width: 60%;
 }
 .search-bar {
     width: 21%;
@@ -89,7 +89,7 @@ body a:hover{
     -webkit-appearance: none;
     /*vertical-align: -webkit-baseline-middle;*/
     color: #131212;
-    font-size: 1.2em;
+    font-size: 0.8em;
 }
 .search-bar input[type="submit"] {
     background: url(/images/search.png)no-repeat 0px 0px;

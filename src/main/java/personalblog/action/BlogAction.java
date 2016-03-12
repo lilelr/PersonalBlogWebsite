@@ -19,8 +19,12 @@ public class BlogAction extends ActionSupport{
     private String content;
     private String title;
     private String tag;
+    private String extract;
 
     private Blog blog;
+    private int blog_id;
+
+    private List<Blog> blogList;
 
     public Blog getBlog() {
         return blog;
@@ -54,6 +58,14 @@ public class BlogAction extends ActionSupport{
         this.tag = tag;
     }
 
+    public String getExtract() {
+        return extract;
+    }
+
+    public void setExtract(String extract) {
+        this.extract = extract;
+    }
+
     public void setBlogService(BlogService blogService) {
         this.blogService = blogService;
     }
@@ -62,9 +74,21 @@ public class BlogAction extends ActionSupport{
         this.blogCatergoryService = blogCatergoryService;
     }
 
-    public String listpages() throws Exception{
 
-        return SUCCESS;
+    public List<Blog> getBlogList() {
+        return blogList;
+    }
+
+    public void setBlogList(List<Blog> blogList) {
+        this.blogList = blogList;
+    }
+
+    public int getBlog_id() {
+        return blog_id;
+    }
+
+    public void setBlog_id(int blog_id) {
+        this.blog_id = blog_id;
     }
 
     public String saveblog() throws Exception{
@@ -73,6 +97,8 @@ public class BlogAction extends ActionSupport{
         Blog tblog=new Blog();
         tblog.setBlog_tag(getTag());
         tblog.setBlog_content(getContent());
+        tblog.setExtract(getExtract());
+        System.out.println(getExtract());
         Blog endBlog = literatureBlogFactory.createBlog(tblog);
         endBlog.setBlog_title(getTitle());
         endBlog.setBlog_time(new Date());
@@ -89,6 +115,17 @@ public class BlogAction extends ActionSupport{
     }
 
     public String blogindex() throws Exception {
+
+        this.setBlogList(this.blogService.getAllBlogs());
+        for(Blog blog:blogList){
+            System.out.println(blog.getBlog_id());
+        }
+        return "success";
+    }
+
+    public String showblog() throws Exception {
+        Blog getBlog = blogService.getById(blog_id);
+        this.setBlog(getBlog);
         return "success";
     }
 }

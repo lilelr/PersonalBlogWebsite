@@ -160,11 +160,13 @@ body {
 
 .article-content{
     width:100%;
+    padding: 10px 10px 10px 20px;
+    font-size: 15px;
     /*height: 800px;*/
     background-color: #fff;
-    -moz-box-shadow:2px 2px 10px #7DD0F8;
-    -webkit-box-shadow:2px 2px 10px #7DD0F8;
-    box-shadow:2px 2px 10px #7DD0F8;
+    /*-moz-box-shadow:2px 2px 10px #7DD0F8;*/
+    /*-webkit-box-shadow:2px 2px 10px #7DD0F8;*/
+    /*box-shadow:2px 2px 10px #7DD0F8;*/
     /*overflow-y:scroll;*/
     /*overflow-x:hidden;*/
 }
@@ -290,6 +292,7 @@ body {
     color: #afafaf;
     font-family: "Apple LiSung Light", Helvetica, Arial, sans-serif;
     font-size:1.2em;
+    margin-left: 0.3em;
     margin-bottom: 0.7em;
 }
 .post-info h4 a{
@@ -364,4 +367,10 @@ body {
     transform: rotate(3deg);
     right: 10px;
     left: auto;
+}
+
+/*footer*/
+.footer{
+    width: 100%;
+    height: 20px;
 }

@@ -25,6 +25,10 @@ public class Blog {
     private Pageheader pageheader;
     @Transient
     private Pagefooter pagefooter;
+    @Column(name="blog_extract")
+    private String extract;
+
+
 
     @ManyToOne(targetEntity = BlogCatergory.class)
     @JoinColumn(name = "blog_catergoryid",referencedColumnName = "blog_catergory_id")
@@ -93,6 +97,15 @@ public class Blog {
     }
 
     public void setBlogCatergory(BlogCatergory blogCatergory) {
+
         this.blogCatergory = blogCatergory;
+    }
+
+    public String getExtract() {
+        return extract;
+    }
+
+    public void setExtract(String extract) {
+        this.extract = extract;
     }
 }

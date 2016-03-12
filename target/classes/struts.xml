@@ -45,6 +45,10 @@
                 method="saveblog">
             <result name="success">/WEB-INF/content/blog/blog.jsp</result>
         </action>
+        <action name="showblog" class="personalblog.action.BlogAction"
+                method="showblog">
+            <result name="success">/WEB-INF/content/blog/blog.jsp</result>
+        </action>
         <action name="initconfig" class="personalblog.action.ueditorAction"
                 method="first">
             <result name="success">/WEB-INF/content/blog/blog.jsp</result>
