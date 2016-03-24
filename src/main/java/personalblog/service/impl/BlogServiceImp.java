@@ -30,7 +30,12 @@ public class BlogServiceImp implements BlogService{
         return blogDao.findAll(Blog.class);
     }
 
+    public void deleteBlogById(int id) {
+        blogDao.delete(Blog.class,id);
+    }
+
     public List<Blog> getAllBlog(){
         return blogDao.findAll(Blog.class);
     }
+
 }

@@ -23,8 +23,8 @@ public class LiteratureBlogFactory implements BlogFactory {
     }
 
     public Blog createBlog(Blog blog) {
-        blog.setPagefooter(createPageFooter());
-        blog.setPageheader(createPageHeader());
+//        blog.setPagefooter(createPageFooter());
+//        blog.setPageheader(createPageHeader());
         return blog;
 
     }

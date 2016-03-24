@@ -1,10 +1,7 @@
 package personalblog.domain;
 
-import personalblog.abstractclass.Pagefooter;
-import personalblog.abstractclass.Pageheader;
-
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by yuxiao on 1/31/16.
@@ -21,10 +18,9 @@ public class Blog {
     private Date blog_time;
     private String blog_tag;
 
-    @Transient
-    private Pageheader pageheader;
-    @Transient
-    private Pagefooter pagefooter;
+    @OneToMany(targetEntity = Message.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "blog")
+    private List<Message> messages=new LinkedList<Message>();
+
     @Column(name="blog_extract")
     private String extract;
 
@@ -76,21 +72,7 @@ public class Blog {
         this.blog_tag = blog_tag;
     }
 
-    public Pageheader getPageheader() {
-        return pageheader;
-    }
 
-    public void setPageheader(Pageheader pageheader) {
-        this.pageheader = pageheader;
-    }
-
-    public Pagefooter getPagefooter() {
-        return pagefooter;
-    }
-
-    public void setPagefooter(Pagefooter pagefooter) {
-        this.pagefooter = pagefooter;
-    }
 
     public BlogCatergory getBlogCatergory() {
         return blogCatergory;
@@ -107,5 +89,13 @@ public class Blog {
 
     public void setExtract(String extract) {
         this.extract = extract;
+    }
+
+    public List<Message> getMessages() {
+        return messages;
+    }
+
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
     }
 }

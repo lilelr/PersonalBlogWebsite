@@ -69,14 +69,56 @@
                 </div>
             </div>
             <div class="row comment-form">
-                <h3>评论</h3>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <h3>
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseOne" onclick="showcomments();">
+                                评论
+                            </a>
+                        </h3>
 
-                <form action="">
-                    <input type="text" placeholder="大侠请留言" required/>
-                    <textarea placeholder="..."></textarea>
-                    <input type="submit" value="发送"/>
+                        <div id="collapseOne" class="panel-collapse collapse ">
+                            <div class="panel-body">
+                                <div class="row eachcomment">
+                                    <div class="usercomment"><p>写得很让人感动！</p></div>
+                                    <div class="commentauthor">-- 大胖熊， 2016-3-09</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h3>留言</h3>
+
+
+                <form id="commentcontent">
+                    <div class="container">
+                        <div class="row">
+                            <div class="input-group col-md-9">
+                                <div class="col-md-4">
+                                    <input type="text" name="visitorname" class="form-control" placeholder="大侠请留名" required/>
+                                </div>
+                                <div class="col-md-5 authoremail">
+                                    <input type="email" name="visitoremail" class="form-control" placeholder="邮箱" required/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <textarea name="visitormsg" placeholder="..."></textarea>
+                    <div class="col-md-3">
+                    <button id="msgbtn" type="button" onclick="sendmsg()">发送</button>
+                    </div>
+                    <div class="col-md-3">
+                    <div id="msgsuccess" class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        发送成功！
+                    </div>
+                    </div>
+
                 </form>
             </div>
+
         </div>
         <div class="col-md-3 side-content">
             <div class="recent">
@@ -112,10 +154,39 @@
          easingType: 'linear'
          };
          */
-
+        $("#msgsuccess").hide();
         $().UItoTop({easingType: 'easeOutQuart'});
 
     });
+
+    function sendmsg(){
+
+        var postdata = $("#commentcontent").serializeArray();
+        postdata.push({"name": "blog_id", "value":${blog.blog_id}});
+        console.log(postdata);
+        $.post("sendmsg.action", postdata,
+                function(data,statusText){
+                    console.log(data);
+                    for(var propName in data){
+                        console.log(propName+":"+data[propName]);
+
+//                        window.alert(propName+":"+data[propName]);
+                    }
+                    $("#msgsuccess").show(300);
+                },
+                "json");
+
+    }
+
+    function showcomments(){
+        $.post("showMsgByBlogId",[{"name": "blog_id", "value":${blog.blog_id}}],
+                function(data,statusText){
+//                    window.alert(statusText);
+//                    window.alert(data);
+                console.log(data);
+        },
+        "json");
+    }
 </script>
 <div class="footer">
     <a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>

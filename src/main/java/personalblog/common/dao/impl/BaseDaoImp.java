@@ -65,7 +65,7 @@ public class BaseDaoImp<T> implements BaseDao<T> {
     }
 
     @SuppressWarnings("unchecked")
-    protected List<T> find(String hql,Object... params){
+    public List<T> find(String hql,Object... params){
         Query query = getSessionFactory().getCurrentSession().createQuery(hql);
         int len=params.length;
         for(int i=0;i<len;i++){

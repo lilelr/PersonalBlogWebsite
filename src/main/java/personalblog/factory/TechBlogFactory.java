@@ -23,8 +23,8 @@ public class TechBlogFactory implements BlogFactory{
     }
 
     public Blog createBlog(Blog blog) {
-        blog.setPageheader(createPageHeader());
-        blog.setPagefooter(createPageFooter());
+//        blog.setPageheader(createPageHeader());
+//        blog.setPagefooter(createPageFooter());
         return blog;
     }
 

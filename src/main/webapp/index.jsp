@@ -13,6 +13,6 @@
   <body>
   <META HTTP-EQUIV="Refresh" CONTENT="0;URL=max/showperson">
 
-  <h1>小花</h1>
+  <h1>客官莫急，正在跳转中……</h1>
   </body>
 </html>

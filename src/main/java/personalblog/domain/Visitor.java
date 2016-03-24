@@ -2,6 +2,8 @@ package personalblog.domain;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -15,8 +17,9 @@ public class Visitor {
     private Integer visitor_id;
     private String visitor_name;
     private String visitor_Email;
-    @OneToMany(targetEntity = Message.class,mappedBy = "visitor")
-    private Set<Message> messages=new HashSet<Message>();
+
+    @OneToMany(targetEntity = Message.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "visitor")
+    private List<Message> messages=new LinkedList<Message>();
 
     public Integer getVisitor_id() {
         return visitor_id;
@@ -42,11 +45,12 @@ public class Visitor {
         this.visitor_Email = visitor_Email;
     }
 
-    public Set<Message> getMessages() {
+    public List<Message> getMessages() {
+
         return messages;
     }
 
-    public void setMessages(Set<Message> messages) {
+    public void setMessages(List<Message> messages) {
         this.messages = messages;
     }
 }

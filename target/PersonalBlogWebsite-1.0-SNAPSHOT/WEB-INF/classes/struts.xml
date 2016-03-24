@@ -25,12 +25,7 @@
             </result>
         </action>
 
-        <action name="sendmsg" class="personalblog.action.VistormsgAction"
-                method="sendmsg">
-            <result name="success" type="redirectAction">
-                <param name="actionName">showperson</param>
-            </result>
-        </action>
+
 
 
         <action name="blogedit" class="personalblog.action.EditBlogAction"
@@ -38,7 +33,7 @@
             <result name="success">/WEB-INF/content/blog/editblog.jsp</result>
         </action>
         <action name="showblogindex" class="personalblog.action.BlogAction" method="blogindex">
-            <result name="success">//WEB-INF/content/blog/blogindex.jsp</result>
+            <result name="success">/WEB-INF/content/blog/blogindex.jsp</result>
         </action>
 
         <action name="saveblog" class="personalblog.action.BlogAction"
@@ -49,14 +44,49 @@
                 method="showblog">
             <result name="success">/WEB-INF/content/blog/blog.jsp</result>
         </action>
+        <action name="showdeleteblog" class="personalblog.action.BlogAction"
+                method="showdeleteblog">
+            <result name="success">/WEB-INF/content/blog/blogdelete.jsp</result>
+        </action>
+        <action name="deleteblog" class="personalblog.action.BlogAction"
+                method="deleteblog">
+            <result name="success" type="redirectAction">
+                <param name="actionName">showdeleteblog</param>
+            </result>
+        </action>
         <action name="initconfig" class="personalblog.action.ueditorAction"
                 method="first">
             <result name="success">/WEB-INF/content/blog/blog.jsp</result>
         </action>
 
 
+
+
         <action name="*">
             <result>/WEB-INF/content/{1}.jsp</result>
+        </action>
+    </package>
+
+    <package name="myjson" extends="json-default">
+        <action name="sendmsg" class="personalblog.action.VistormsgAction"
+                method="sendmsg">
+            <result type="json">
+
+                <!--<param name="excludeProperties">{visitorname}</param>-->
+                <param name="root">{visitorname,visitoremail}</param>
+                <param name="contentType">text/html</param>
+                <param name="noCache">true</param>
+            </result>
+        </action>
+
+        <action name="showMsgByBlogId" class="personalblog.action.VistormsgAction"
+                method="showMsgByBlogId">
+            <result type="json">
+                <!--<param name="excludeProperties">{visitorname}</param>-->
+                <!--<param name="root">{msgFromBlog}</param>-->
+                <param name="contentType">text/html</param>
+                <param name="noCache">true</param>
+            </result>
         </action>
     </package>
 </struts>

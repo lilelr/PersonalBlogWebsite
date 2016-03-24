@@ -12,4 +12,5 @@ public interface BlogService {
     Integer save(Blog blog);
     Blog getById(Integer id);
     List<Blog> getAllBlogs();
+    void deleteBlogById(int id);
 }

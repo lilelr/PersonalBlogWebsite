@@ -92,20 +92,22 @@ public class BlogAction extends ActionSupport{
     }
 
     public String saveblog() throws Exception{
-        System.out.println(getContent());
-        LiteratureBlogFactory literatureBlogFactory=new LiteratureBlogFactory();
+//        System.out.println(getContent());
+//        LiteratureBlogFactory literatureBlogFactory=new LiteratureBlogFactory();
         Blog tblog=new Blog();
         tblog.setBlog_tag(getTag());
         tblog.setBlog_content(getContent());
         tblog.setExtract(getExtract());
-        System.out.println(getExtract());
-        Blog endBlog = literatureBlogFactory.createBlog(tblog);
-        endBlog.setBlog_title(getTitle());
-        endBlog.setBlog_time(new Date());
-
-        List<BlogCatergory> blogCatergories=blogCatergoryService.getblogcatergories();
-        endBlog.setBlogCatergory(blogCatergories.get(0));
-        Integer blog_id = blogService.save(endBlog);
+//        System.out.println(getExtract());
+//        Blog endBlog = literatureBlogFactory.createBlog(tblog);
+//        endBlog.setBlog_title(getTitle());
+//        endBlog.setBlog_time(new Date());
+//
+//        List<BlogCatergory> blogCatergories=blogCatergoryService.getblogcatergories();
+//        endBlog.setBlogCatergory(blogCatergories.get(0));
+        tblog.setBlog_title(getTitle());
+        tblog.setBlog_time(new Date());
+        Integer blog_id = blogService.save(tblog);
         System.out.println("主键是"+blog_id);
         Blog getBlog = blogService.getById(blog_id);
         this.setBlog(getBlog);
@@ -126,6 +128,19 @@ public class BlogAction extends ActionSupport{
     public String showblog() throws Exception {
         Blog getBlog = blogService.getById(blog_id);
         this.setBlog(getBlog);
+        return "success";
+    }
+
+    public String deleteblog() throws Exception{
+        blogService.deleteBlogById(blog_id);
+        return "success";
+    }
+
+    public String showdeleteblog(){
+        this.setBlogList(this.blogService.getAllBlogs());
+        for(Blog blog:blogList){
+            System.out.println(blog.getBlog_id());
+        }
         return "success";
     }
 }

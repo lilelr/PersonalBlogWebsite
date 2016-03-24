@@ -205,10 +205,30 @@ body {
     margin-top:20px;
     border-top:2px dashed #5ebb61;
 }
+/*comment*/
+.comment-form .eachcomment{
+    border-bottom: 1px dashed #504f4d;
+}
+.comment-form .usercomment{
+    margin-left: 15px;
+    font-size: 16px;
+    line-height: 21px;
+    color: #666666;
+    text-align: left;
+}
+.comment-form .commentauthor{
+    margin-right: 15px;
+    padding-bottom: 10px;
+    text-align: right;
+    font-size: 17px;
+    color: #0bbb42;
+
+}
+
 .comment-form{
     margin-bottom: 20px;
 }
-.comment-form form input[type="text"], .comment-form form textarea{
+.comment-form form textarea{
     color: #333333;
     width:100%;
     padding: 10px 15px;
@@ -229,7 +249,7 @@ body {
     height: 200px;
     resize: none;
 }
-.comment-form form input[type="submit"]{
+.comment-form form #msgbtn{
     color: #000;
     background: #03AEFF;
     padding: 0.4em 1.5em;

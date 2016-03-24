@@ -18,6 +18,11 @@ public class Message {
     private String msg_ip;
     private String msg_datetime;
 
+    @ManyToOne(targetEntity = Blog.class)
+    @JoinColumn(name = "msg_blogId",referencedColumnName = "blog_id"
+            , nullable = false)
+    private Blog blog;
+
     @ManyToOne(targetEntity = Visitor.class)
     @JoinColumn(name = "msg_visitorId",referencedColumnName = "visitor_id"
                 , nullable = false)
@@ -69,5 +74,13 @@ public class Message {
 
     public void setVisitor(Visitor visitor) {
         this.visitor = visitor;
+    }
+
+    public Blog getBlog() {
+        return blog;
+    }
+
+    public void setBlog(Blog blog) {
+        this.blog = blog;
     }
 }

@@ -14,5 +14,6 @@ public interface BaseDao<T> {
     void delete(Class<T> entityClazz, Serializable id);
     List<T> findAll(Class<T> entityClazz);
     long findCount(Class<T> entityClazz);
+    List<T> find(String hql,Object... params);
 
 }
