@@ -79,11 +79,11 @@
                         </h3>
 
                         <div id="collapseOne" class="panel-collapse collapse ">
-                            <div id="oldcommemts" class="panel-body">
-                                <%--<div class="row eachcomment">--%>
-                                <%--<div class="usercomment"><p>写得很让人感动！</p></div>--%>
-                                <%--<div class="commentauthor">-- 大胖熊， 2016-3-09</div>--%>
-                                <%--</div>--%>
+                            <div class="panel-body">
+                                <div class="row eachcomment">
+                                    <div class="usercomment"><p>写得很让人感动！</p></div>
+                                    <div class="commentauthor">-- 大胖熊， 2016-3-09</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -96,28 +96,24 @@
                         <div class="row">
                             <div class="input-group col-md-9">
                                 <div class="col-md-4">
-                                    <input type="text" name="visitorname" class="form-control" placeholder="大侠请留名"
-                                           required/>
+                                    <input type="text" name="visitorname" class="form-control" placeholder="大侠请留名" required/>
                                 </div>
                                 <div class="col-md-5 authoremail">
-                                    <input type="email" name="visitoremail" class="form-control" placeholder="邮箱"
-                                           required/>
+                                    <input type="email" name="visitoremail" class="form-control" placeholder="邮箱" required/>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <textarea name="visitormsg" placeholder="..."></textarea>
-
                     <div class="col-md-3">
-                        <button id="msgbtn" type="button" onclick="sendmsg()">发送</button>
+                    <button id="msgbtn" type="button" onclick="sendmsg()">发送</button>
                     </div>
                     <div class="col-md-3">
-                        <div id="msgsuccess" class="alert alert-success " role="alert">
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            发送成功！
-                        </div>
+                    <div id="msgsuccess" class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        发送成功！
+                    </div>
                     </div>
 
                 </form>
@@ -149,7 +145,6 @@
 </div>
 </div>
 <script type="text/javascript">
-    window["commentload"] = false;
     $(document).ready(function () {
         /*
          var defaults = {
@@ -164,52 +159,33 @@
 
     });
 
-    function sendmsg() {
-        $("#msgsuccess").hide();
+    function sendmsg(){
 
         var postdata = $("#commentcontent").serializeArray();
         postdata.push({"name": "blog_id", "value":${blog.blog_id}});
         console.log(postdata);
         $.post("sendmsg.action", postdata,
-                function (data, statusText) {
+                function(data,statusText){
                     console.log(data);
-//                    for(var propName in data){
-////                        console.log(propName+":"+data[propName]);
-//
-////                        window.alert(propName+":"+data[propName]);
-//                    }
-                    $("#msgsuccess").show(1000,function(){
-                        $(this).hide(1000);
-                    });
+                    for(var propName in data){
+                        console.log(propName+":"+data[propName]);
+
+//                        window.alert(propName+":"+data[propName]);
+                    }
+                    $("#msgsuccess").show(300);
                 },
                 "json");
-        window["commentload"] = false;
 
     }
 
-    function showcomments() {
-        if (window["commentload"] == false) {
-            $("#oldcommemts").empty();
-            $.post("showMsgByBlogId", [{"name": "blog_id", "value":${blog.blog_id}}],
-                    function (data, statusText) {
+    function showcomments(){
+        $.post("showMsgByBlogId",[{"name": "blog_id", "value":${blog.blog_id}}],
+                function(data,statusText){
 //                    window.alert(statusText);
 //                    window.alert(data);
-                        if (data.length >= 1) {
-                            var msgs = data[0];
-                            for (var index in msgs) {
-                                $("#oldcommemts").append('<div class="row eachcomment"><div class="usercomment"><p>' + msgs[index]["msg_content"] +
-                                        '</p></div><div class="commentauthor">-- ' +
-                                        msgs[index]["visitor"]["visitor_name"] + '， ' + msgs[index]["msg_datetime"] + '</div></div></div>');
-
-//                            window.alert( " :" + msgs[index]["msg_content"] );
-                            }
-                        }
-
-                        console.log(data);
-                    },
-                    "json");
-            window["commentload"] = true;
-        }
+                console.log(data);
+        },
+        "json");
     }
 </script>
 <div class="footer">

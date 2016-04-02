@@ -8,9 +8,10 @@ import personalblog.domain.Visitor;
 import personalblog.service.MessageService;
 import personalblog.service.VisitorService;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by yuxiao on 1/19/16.
@@ -113,7 +114,6 @@ public class VistormsgAction extends ActionSupport{
     }
 
     public String sendmsg(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         Visitor visitor=new Visitor();
         Message tempmsg=new Message();
         tempmsg.setMsg_content(visitormsg);
@@ -121,7 +121,6 @@ public class VistormsgAction extends ActionSupport{
         visitor.setVisitor_name(visitorname);
         visitorService.save(visitor);
         tempmsg.setVisitor(visitor);
-        tempmsg.setMsg_datetime(sdf.format(new Date()));
         Blog tblog = new Blog();
         tblog.setBlog_id(this.getBlog_id());
         tempmsg.setBlog(tblog);

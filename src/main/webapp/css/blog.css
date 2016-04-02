@@ -206,9 +206,9 @@ body {
     border-top:2px dashed #5ebb61;
 }
 /*comment*/
-/*.comment-form .eachcomment{*/
-    /*/!*border-bottom: 1px dashed #504f4d;*!/*/
-/*}*/
+.comment-form .eachcomment{
+    border-bottom: 1px dashed #504f4d;
+}
 .comment-form .usercomment{
     margin-left: 15px;
     font-size: 16px;

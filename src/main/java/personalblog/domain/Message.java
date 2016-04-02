@@ -1,7 +1,6 @@
 package personalblog.domain;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by yuxiao on 1/19/16.
