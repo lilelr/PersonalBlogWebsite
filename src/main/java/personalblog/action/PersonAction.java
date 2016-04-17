@@ -149,5 +149,9 @@ public class PersonAction extends ActionSupport{
 
     }
 
+    public String adminIndex(){
+        return SUCCESS;
+    }
+
 
 }

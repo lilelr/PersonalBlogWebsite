@@ -13,6 +13,15 @@
                 method="showperson">
             <result name="success">/WEB-INF/content/home.jsp</result>
         </action>
+        <action name="adminIndex" class="personalblog.action.PersonAction"
+                method="adminIndex">
+            <result name="success">/WEB-INF/content/adminlogin.jsp</result>
+        </action>
+        <action name="adminLogin" class="personalblog.action.PersonAction"
+                method="adminLogin">
+            <result name="success">/WEB-INF/content/admin.jsp</result>
+            <result name="error">/WEB-INF/content/adminloginerror.jsp</result>
+        </action>
         <!-- 让用户直接访问该应用时列出所有视图页面 -->
 
         <action name="resumedl" class="personalblog.action.ResumeDownloadAction">
@@ -26,11 +35,11 @@
         </action>
 
 
-
-
         <action name="blogedit" class="personalblog.action.EditBlogAction"
                 method="editblog">
             <result name="success">/WEB-INF/content/blog/editblog.jsp</result>
+            <result name="error">/WEB-INF/content/adminout.jsp</result>
+
         </action>
         <action name="showblogindex" class="personalblog.action.BlogAction" method="blogindex">
             <result name="success">/WEB-INF/content/blog/blogindex.jsp</result>
@@ -47,6 +56,7 @@
         <action name="showdeleteblog" class="personalblog.action.BlogAction"
                 method="showdeleteblog">
             <result name="success">/WEB-INF/content/blog/blogdelete.jsp</result>
+            <result name="error">/WEB-INF/content/adminout.jsp</result>
         </action>
         <action name="deleteblog" class="personalblog.action.BlogAction"
                 method="deleteblog">
@@ -58,8 +68,6 @@
                 method="first">
             <result name="success">/WEB-INF/content/blog/blog.jsp</result>
         </action>
-
-
 
 
         <action name="*">

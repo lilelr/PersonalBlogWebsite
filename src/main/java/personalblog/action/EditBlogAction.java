@@ -1,5 +1,6 @@
 package personalblog.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.ServletActionContext;
 
@@ -40,6 +41,11 @@ public class EditBlogAction extends ActionSupport{
     }
 
     public String editblog(){
+        ActionContext ctx = ActionContext.getContext();
+        String admin = (String)ctx.getSession().get("admin");
+        if(admin == null || admin.isEmpty()){
+            return ERROR;
+        }
         return SUCCESS;
     }
 

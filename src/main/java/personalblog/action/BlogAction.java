@@ -1,5 +1,6 @@
 package personalblog.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import personalblog.domain.Blog;
 import personalblog.domain.BlogCatergory;
@@ -13,7 +14,7 @@ import java.util.List;
 /**
  * Created by yuxiao on 1/31/16.
  */
-public class BlogAction extends ActionSupport{
+public class BlogAction extends ActionSupport {
     private BlogService blogService;
     private BlogCatergoryService blogCatergoryService;
     private String content;
@@ -91,10 +92,10 @@ public class BlogAction extends ActionSupport{
         this.blog_id = blog_id;
     }
 
-    public String saveblog() throws Exception{
+    public String saveblog() throws Exception {
 //        System.out.println(getContent());
 //        LiteratureBlogFactory literatureBlogFactory=new LiteratureBlogFactory();
-        Blog tblog=new Blog();
+        Blog tblog = new Blog();
         tblog.setBlog_tag(getTag());
         tblog.setBlog_content(getContent());
         tblog.setExtract(getExtract());
@@ -108,7 +109,7 @@ public class BlogAction extends ActionSupport{
         tblog.setBlog_title(getTitle());
         tblog.setBlog_time(new Date());
         Integer blog_id = blogService.save(tblog);
-        System.out.println("主键是"+blog_id);
+        System.out.println("主键是" + blog_id);
         Blog getBlog = blogService.getById(blog_id);
         this.setBlog(getBlog);
 //        this.setBlog(tblog);
@@ -119,7 +120,7 @@ public class BlogAction extends ActionSupport{
     public String blogindex() throws Exception {
 
         this.setBlogList(this.blogService.getAllBlogs());
-        for(Blog blog:blogList){
+        for (Blog blog : blogList) {
             System.out.println(blog.getBlog_id());
         }
         return "success";
@@ -131,14 +132,20 @@ public class BlogAction extends ActionSupport{
         return "success";
     }
 
-    public String deleteblog() throws Exception{
+    public String deleteblog() throws Exception {
         blogService.deleteBlogById(blog_id);
         return "success";
     }
 
-    public String showdeleteblog(){
+    public String showdeleteblog() {
+        ActionContext ctx = ActionContext.getContext();
+        String admin = (String) ctx.getSession().get("admin");
+        if (admin == null || admin.isEmpty()) {
+            return ERROR;
+        }
+
         this.setBlogList(this.blogService.getAllBlogs());
-        for(Blog blog:blogList){
+        for (Blog blog : blogList) {
             System.out.println(blog.getBlog_id());
         }
         return "success";
