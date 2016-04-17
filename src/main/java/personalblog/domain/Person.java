@@ -27,6 +27,7 @@ public class Person {
     private String person_resume_path;
     private String person_company;
     private String person_enlighten;
+    private String person_admin;
 
     @OneToMany(targetEntity = Interest.class)
     @JoinColumn(name="interest_person_id", referencedColumnName = "person_id")
@@ -203,6 +204,15 @@ public class Person {
     }
 
     public void setBlogCatergories(Set<BlogCatergory> blogCatergories) {
+
         this.blogCatergories = blogCatergories;
+    }
+
+    public String getPerson_admin() {
+        return person_admin;
+    }
+
+    public void setPerson_admin(String person_admin) {
+        this.person_admin = person_admin;
     }
 }

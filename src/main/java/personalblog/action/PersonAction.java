@@ -1,5 +1,6 @@
 package personalblog.action;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import personalblog.domain.Education;
 import personalblog.domain.Honor;
@@ -26,6 +27,9 @@ public class PersonAction extends ActionSupport{
     private List<Education> educations;
     private List<Honor> honors;
     private Person person;
+    private String adminname;
+    private String adminpassword;
+
 
     public void setHonorService(HonorService honorService) {
         this.honorService = honorService;
@@ -87,6 +91,22 @@ public class PersonAction extends ActionSupport{
         this.honors = honors;
     }
 
+    public String getAdminname() {
+        return adminname;
+    }
+
+    public void setAdminname(String adminname) {
+        this.adminname = adminname;
+    }
+
+    public String getAdminpassword() {
+        return adminpassword;
+    }
+
+    public void setAdminpassword(String adminpassword) {
+        this.adminpassword = adminpassword;
+    }
+
     public String showperson(){
         if (personService != null){
             System.out.println("服务"+personService);
@@ -115,6 +135,18 @@ public class PersonAction extends ActionSupport{
     public String showhonor(){
         setHonors(honorService.getHonors());
         return SUCCESS;
+    }
+
+    public String adminLogin(){
+        ActionContext cxt = ActionContext.getContext();
+        Person admin = personService.getPerson().get(0);
+        if(admin.getPerson_user_name().equals(this.adminname)  && admin.getPerson_admin().equals(this.adminpassword)){
+            cxt.getSession().put("admin","admin");
+            return SUCCESS;
+        } else{
+            return ERROR;
+        }
+
     }
 
 
