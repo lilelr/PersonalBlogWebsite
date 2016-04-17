@@ -2,6 +2,10 @@ package personalblog.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 import org.apache.struts2.json.annotations.JSON;
+
+import org.owasp.html.PolicyFactory;
+import org.owasp.html.Sanitizers;
+
 import personalblog.domain.Blog;
 import personalblog.domain.Message;
 import personalblog.domain.Visitor;
@@ -9,14 +13,13 @@ import personalblog.service.MessageService;
 import personalblog.service.VisitorService;
 
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 
 /**
  * Created by yuxiao on 1/19/16.
  */
-public class VistormsgAction extends ActionSupport{
+public class VistormsgAction extends ActionSupport {
 
 
     private VisitorService visitorService;
@@ -29,7 +32,7 @@ public class VistormsgAction extends ActionSupport{
 
     private List<Message> msgFromBlog;
 
-    private Map<String,List<Message>> msgsOfResult;
+    private Map<String, List<Message>> msgsOfResult;
 
 //    private String succssmsg;
 //
@@ -67,16 +70,13 @@ public class VistormsgAction extends ActionSupport{
     }
 
 
-
-    public String getVisitormsg()
-    {
+    public String getVisitormsg() {
         return visitormsg;
     }
 
     public void setVisitormsg(String visitormsg) {
         this.visitormsg = visitormsg;
     }
-
 
 
     public List<Message> getMsgFromBlog() {
@@ -88,7 +88,7 @@ public class VistormsgAction extends ActionSupport{
         this.msgFromBlog = msgFromBlog;
     }
 
-    @JSON(name="msgsMap")
+    @JSON(name = "msgsMap")
     public Map<String, List<Message>> getMsgsOfResult() {
         return msgsOfResult;
     }
@@ -106,16 +106,19 @@ public class VistormsgAction extends ActionSupport{
     }
 
 
-    public String showMsgByBlogId(){
+    public String showMsgByBlogId() {
         this.setMsgFromBlog(this.messageService.findMsgByBlogId(this.blog_id));
         this.setMsgsOfResult(new HashMap<String, List<Message>>());
-        this.msgsOfResult.put("msgs",this.getMsgFromBlog());
+        this.msgsOfResult.put("msgs", this.getMsgFromBlog());
         return SUCCESS;
     }
 
-    public String sendmsg(){
-        Visitor visitor=new Visitor();
-        Message tempmsg=new Message();
+    public String sendmsg() {
+        Visitor visitor = new Visitor();
+        Message tempmsg = new Message();
+        this.visitormsg = this.sanitize(visitormsg);
+        this.visitorname = this.sanitize(visitorname);
+        this.visitoremail = this.sanitize(visitoremail);
         tempmsg.setMsg_content(visitormsg);
         visitor.setVisitor_Email(visitoremail);
         visitor.setVisitor_name(visitorname);
@@ -128,4 +131,13 @@ public class VistormsgAction extends ActionSupport{
 //        System.out.println(this.getBlog_id());
         return SUCCESS;
     }
+
+
+    public String sanitize(String validateStr) {
+        PolicyFactory policy = Sanitizers.FORMATTING.and(Sanitizers.LINKS);
+        String safeHTML = policy.sanitize(validateStr);
+        System.out.println(safeHTML);
+        return safeHTML;
+    }
+
 }
